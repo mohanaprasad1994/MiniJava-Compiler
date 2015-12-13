@@ -1,0 +1,3 @@
+Through six phases, we designed a compiler for subset of Java called Mini-Java using Flex, Bison and JavaCC in C and Java. This included macro expansion, syntactic analysis, semantic analysis, IR generation and machine-level code generation.
+
+For details refer: http://www.cse.iitm.ac.in/~krishna/cs3300/cs3310.html
