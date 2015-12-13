@@ -1,0 +1,12 @@
+Macro expansion and Parsing for MacroJava
+Use Flex and Bison to write a MacroJava to MiniJava translator. Your Flex file should be named P1.l and your Bison file should be named P1.y and if X.Java contains a valid MacroJava program to be processed then
+
+bison -d P1.y
+flex P1.l
+gcc P1.tab.c lex.yy.c -lfl -o P1
+./P1 < X.java > Y.java
+
+should generate the correct minijava code in Y.java. Note, your program must take input from standard input and write to standard output (so that we can use the redirection). The format for the minijava programs is given by the minijava grammar.
+If the input macrojava code does not parse then output
+"// Failed to parse macrojava code."
+
