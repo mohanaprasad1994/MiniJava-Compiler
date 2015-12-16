@@ -1,3 +1,44 @@
 Through six phases, we designed a compiler for subset of Java called Mini-Java using Flex, Bison and JavaCC in C and Java. This included macro expansion, syntactic analysis, semantic analysis, IR generation and machine-level code generation.
 
 For details refer: http://www.cse.iitm.ac.in/~krishna/cs3300/cs3310.html
+
+
+Instructions for running: 
+
+=============
+1. Download jtb from:
+
+http://www.cse.iitm.ac.in/~krishna/cs6848/software.html Or
+http://compilers.cs.ucla.edu/jtb/
+
+2. Install javacc
+
+On Ubuntu
+apt-get install javacc
+On Fedora
+yum install javacc
+
+Or alternately you can download from http://javacc.java.net/ and just Set PATH like this:
+export javacc=
+export PATH=$javacc/bin:$PATH
+
+3. mkdir SomeDir
+Download minijava's grammar from Krishna Sir's web page
+http://www.cse.iitm.ac.in/~krishna/cs3300/minijava.jj
+
+4. Generate javacc's input grammar and the visitors and jtb.out.jj file using jtb
+
+java -jar jtb132.jar minijava.jj
+
+5. Generate the syntax tree using javacc
+
+javacc jtb.out.jj
+
+- TokenMgrError.java, ParseException.java, Token.java and JavaCharStream.java files will be created.(Boiler-plate files)
+- MiniJavaParser.java, MiniJavaParserConstants.java and MiniJavaParserTokenManager.java files will be created.(custom files)
+
+6. Download the Main.java program (from http://www.cse.iitm.ac.in/~krishna/cs3300/Main.java)
+
+And sample minijava program (any program from http://www.cse.iitm.ac.in/~krishna/cs3300/minijava/)
+
+7. Compile Main (javac Main.java) and execute it with any minijava program file as input 

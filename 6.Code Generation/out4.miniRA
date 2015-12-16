@@ -1,0 +1,69 @@
+MAIN[0][0][2]
+	MOVE t0 4
+	MOVE t1 TIMES t0 1
+	MOVE t0 HALLOCATE t1
+	MOVE t1 t0
+	MOVE t0 t1
+	MOVE t2 Fac_ComputeFac
+	HSTORE t0 0 t2
+	MOVE t0 4
+	MOVE t2 TIMES t0 2
+	MOVE t0 HALLOCATE t2
+	MOVE t2 t0
+	MOVE t0 t2
+	MOVE t3 t1
+	HSTORE t0 0 t3
+	MOVE t3 t2
+	MOVE t0 0
+	HSTORE t3 4 t0
+	MOVE t3 t2
+	MOVE t0 t3
+	MOVE t2 t0
+	HLOAD t3 t2 0
+	MOVE t2 t3
+	HLOAD t3 t2 0
+	MOVE t2 t3
+	MOVE t3 t0
+	MOVE t0 10
+	MOVE a0 t3
+	MOVE a1 t0
+	CALL t2
+	MOVE t1 v0
+	PRINT  t1
+	END
+Fac_ComputeFac[2][2][2]
+	ASTORE SPILLEDARG 0 s0
+	ASTORE SPILLEDARG 1 s1
+	MOVE s0 a0
+	MOVE s1 a1
+	MOVE t0 s1
+	MOVE t1 LT t0 1
+	MOVE t0 t1
+	CJUMP t0 L0 
+	MOVE t1 1
+	JUMP L1
+L0	NOOP
+	MOVE t0 s0
+	MOVE t2 t0
+	HLOAD t3 t2 0
+	MOVE t2 t3
+	HLOAD t3 t2 0
+	MOVE t2 t3
+	MOVE t3 s1
+	MOVE t4 MINUS t3 1
+	MOVE t3 t0
+	MOVE t0 t4
+	MOVE a0 t3
+	MOVE a1 t0
+	CALL t2
+	MOVE t4 v0
+	MOVE t0 s1
+	MOVE t3 TIMES t0 t4
+	MOVE t1 t3
+L1	NOOP
+	MOVE t3 t1
+	MOVE v0 t3
+	ALOAD s0 SPILLEDARG 0
+	ALOAD s1 SPILLEDARG 1
+	END
+// Number of  vars after packing = 0; Number of Spilled vars = 0
